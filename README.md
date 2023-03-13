@@ -10,7 +10,7 @@
 <br />
 
 # Version 0.2:
-- Částečné přeložení účtu
+- Částečné přeložení stránky úpravy účtu
 
 # Version 0.1:
 - Schopnost vytvářet produkty a kategorie v admin sekci
