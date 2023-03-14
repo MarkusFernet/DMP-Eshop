@@ -39,8 +39,8 @@ class UserBase(AbstractBaseUser, PermissionsMixin):
 
     email = models.EmailField(_('email address'), unique=True)
     user_name = models.CharField(max_length=150, unique=True)
-    first_name = models.CharField(max_length=150, blank=True)
-    last_name = models.CharField(max_length=150, blank=True)
+    first_name = models.CharField(max_length=50, blank=True)
+    last_name = models.CharField(max_length=50, blank=True)
     about = models.TextField(_(
         'about'), max_length=500, blank=True)
     # Delivery details
@@ -69,7 +69,7 @@ class UserBase(AbstractBaseUser, PermissionsMixin):
         send_mail(
             subject,
             message,
-            'l@1.com',
+            'markusfernet@gmail.com',
             [self.email],
             fail_silently=False,
         )

@@ -7,7 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = str(os.environ.get('SECRET_KEY'))
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'web-production-c8c7.up.railway.app']
 CSRF_TRUSTED_ORIGINS = [
@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'basket',
     'account',
     'payment',
+    'orders',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +131,6 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'markusfernet@gmail.com'
 
 PASSWORD_RESET_TIMEOUT = 86400
+
+# Basket session ID
+BASKET_SESSION_ID = 'basket'

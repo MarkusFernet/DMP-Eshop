@@ -11,13 +11,15 @@
 
 # Version 0.2:
 - Částečné přeložení stránky úpravy účtu
+- Aktivace zasílání emailů
+- Přidání sledování plateb
 
 # Version 0.1:
 - Schopnost vytvářet produkty a kategorie v admin sekci
 - Základní responsivita
 - Přidávání, odtraňování a updatování produktů do košíku pomocí sessions
 - Registrace, přihlašování, ohlašování, úprava a smazání účtů 
-- Reset hesla účtů a fungující zasíláni emailů
+- Reset hesla účtů a neaktivované fungující zasíláni emailů
 - Fungující nahrání na hosting <a href="https://web-production-c8c7.up.railway.app/">Railway.app</a>
 
 ### To do:
@@ -32,3 +34,5 @@
 - Změnit způsob přidávání do košíku
 - Přeložení emailů, košíku a účtů
 - Zvětšit možnost změnění účtu
+- Vzhled emailů
+- Spravit sčítání přred total pay
