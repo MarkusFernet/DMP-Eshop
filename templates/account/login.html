@@ -1,0 +1,28 @@
+{% extends "./sub_base.html" %}
+{% block title %}Přihlásit se{% endblock %}
+{% block sub_content %}
+
+<form class="account-form px-4" action="{% url 'account:login' %}" method="post">
+  {% csrf_token %}
+  <h3 class="mb-4">Přihlásit se</h3>
+  {% if form.errors %}
+  <div class="alert alert-primary" role="alert">
+    Error: Username or Password not correct!
+  </div>
+  {% endif %}
+  <label class="form-label">{{ form.username.label }}</label>
+  {{ form.username }}
+  <label class="form-label">{{ form.password.label }}</label>
+  {{ form.password }}
+  <div class="d-grid gap-2">
+    <input type="hidden" name="next" value="{{ next }}">
+    <button class="btn btn-primary py-2 mb-4 mt-5 fw-bold" type="submit" value="Log-in">Přihlásit se
+    </button>
+  </div>
+  <div class="pb-3 d-flex justify-content-between">
+    <a class="text-start" href="{% url "account:register" %}">Ještě nemáte účet?</a>
+    <a class="text-end" href="{% url "account:pwdreset" %}">Zapomněli jste heslo?</a>
+  </div>
+</form>
+
+{% endblock %}

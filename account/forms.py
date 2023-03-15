@@ -5,23 +5,18 @@ from django.contrib.auth.forms import (AuthenticationForm, PasswordResetForm, Se
 
 class UserLoginForm(AuthenticationForm):
 
-    username = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'form-control mb-3', 'placeholder': 'Emssail', 'id': 'login-username'}))
-    password = forms.CharField(widget=forms.PasswordInput(
-        attrs={
-            'class': 'form-control',
-            'placeholder': 'Password',
-            'id': 'login-pwd',
-        }
-    ))
+    username = forms.CharField(label='E-mail', widget=forms.TextInput(
+        attrs={'class': 'form-control mb-3', 'placeholder': 'E-mail', 'id': 'login-username'}))
+    password = forms.CharField(label='Heslo', widget=forms.PasswordInput(
+        attrs={'class': 'form-control', 'placeholder': 'Heslo', 'id': 'login-pwd'}))
 
 
 class RegistrationForm(forms.ModelForm):
-    user_name = forms.CharField(label='Enter Username', min_length=4, max_length=50, help_text='Required')
-    email = forms.EmailField(max_length=100, help_text='Required', error_messages={
-                             'required': 'Sorry, you will need an email'})
-    password = forms.CharField(label='Password', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Repeat password', widget=forms.PasswordInput)
+    user_name = forms.CharField(label='Uživatelské jméno', min_length=4, max_length=50,)
+    email = forms.EmailField(label='E-mail', max_length=100,
+                             error_messages={'required': 'Sorry, you will need an email'})
+    password = forms.CharField(label='Heslo', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Potvrdit heslo', widget=forms.PasswordInput)
 
     class Meta:
         model = UserBase
@@ -50,13 +45,13 @@ class RegistrationForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['user_name'].widget.attrs.update(
-            {'class': 'form-control mb-3', 'placeholder': 'Username'})
+            {'class': 'form-control mb-3', 'placeholder': 'Uživatelské jméno'})
         self.fields['email'].widget.attrs.update(
             {'class': 'form-control mb-3', 'placeholder': 'E-mail', 'name': 'email', 'id': 'id_email'})
         self.fields['password'].widget.attrs.update(
-            {'class': 'form-control mb-3', 'placeholder': 'Password'})
+            {'class': 'form-control mb-3', 'placeholder': 'Heslo'})
         self.fields['password2'].widget.attrs.update(
-            {'class': 'form-control', 'placeholder': 'Repeat Password'})
+            {'class': 'form-control', 'placeholder': 'Potvrdit heslo'})
 
 
 class UserEditForm(forms.ModelForm):
@@ -86,8 +81,8 @@ class UserEditForm(forms.ModelForm):
 
 class PwdResetForm(PasswordResetForm):
 
-    email = forms.EmailField(max_length=254, widget=forms.TextInput(
-        attrs={'class': 'form-control mb-3', 'placeholder': 'Email', 'id': 'form-email'}))
+    email = forms.EmailField(label='E-mail', max_length=254, widget=forms.TextInput(
+        attrs={'class': 'form-control mb-3', 'placeholder': 'E-mail', 'id': 'form-email'}))
 
     def clean_email(self):
         email = self.cleaned_data['email']

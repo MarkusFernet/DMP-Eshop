@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}*{% endblock %}
+{% block content %}
+
+<section class="text-center container">
+  <div class="row py-lg-3">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="h1 fw-bold">Nadpis</h1>
+      <p class="lead text-muted sansserif">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget
+        porttitor ex. In hac habitasse platea dictumst. Sed ut sapien et lectus molestie efficitur sed sed
+        libero. Vestibulum quis bibendum felis. Morbi semper metus sit amet felis faucibus porta. Cras venenatis
+        augue eu imperdiet dignissim. Suspendisse sed tempus neque. Vivamus quis sodales nunc, ut ultrices arcu.
+        Aliquam erat volutpat. Phasellus vitae augue semper, rutrum nulla sed, sollicitudin justo. In eu
+        tristique nibh, ac aliquam odio. Phasellus blandit dui ut libero rutrum, nec bibendum quam bibendum.
+        Aliquam tellus est, hendrerit eget fringilla vitae, efficitur vel nunc.</p>
+      <p>
+        <a href="#" class="btn btn-primary my-2">Tlačítko</a>
+      </p>
+    </div>
+  </div>
+</section>
+<div class="container">
+  <div class="row">
+    <div class="album pt-5">
+      <div class="col-12 pb-3">
+        <h1 class="h3">Všechny produkty</h1>
+      </div>
+      {% if not products %}
+      <div class="col-12">Aktuálně nejsou žádné produkty k dispozici</div>
+      {% else %}
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
+        {% for product in products %}
+        <div class="col">
+          <div class="card shadow-sm">
+            <a href="{{ product.get_absolute_url }}">
+              <img class="img-fluid" alt="Responsive image" src="{{ product.image.url }}">
+            </a>
+            <div class="card-body">
+              <p class="card-text">
+                <a class="text-dark text-decoration-none"
+                  href="{{ product.get_absolute_url }}">{{ product.title|slice:":50" }}</a>
+              </p>
+              <div class="fw-bold">{{ product.price }} Kč</div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

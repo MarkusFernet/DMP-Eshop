@@ -15,7 +15,7 @@ from django.core.mail import EmailMessage
 
 @login_required
 def dashboard(request):
-    return render(request, 'account/user/dashboard.html')
+    return render(request, 'account/dashboard/dashboard.html')
 
 
 @login_required
@@ -28,7 +28,7 @@ def edit_details(request):
     else:
         user_form = UserEditForm(instance=request.user)
 
-    return render(request, 'account/user/edit_details.html', {'user_form': user_form})
+    return render(request, 'account/dashboard/edit_details.html', {'user_form': user_form})
 
 
 @login_required
@@ -62,25 +62,11 @@ def account_register(request):
                 'token': account_activation_token.make_token(user),
             })
             user.email_user(subject=subject, message=message)
-
-            # activateEmail(request, user, registerForm.cleaned_data.get('email'))
-            return HttpResponse('Registered succesfully and activation sent')
+            return render(request, 'account/registration/register_email_confirm.html', {'form': registerForm})
 
     else:
         registerForm = RegistrationForm()
     return render(request, 'account/registration/register.html', {'form': registerForm})
-
-
-# def activateEmail(request, user, to_email):
-#     mail_subject = "Activate your Account"
-#     message = render_to_string('account/registration/account_activation_email.html', {
-#         'user': user.user_name,
-#         'domain': get_current_site(request).domain,
-#         'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-#         'token': account_activation_token.make_token(user),
-#         "protocol": 'https' if request.is_secure() else 'http'
-#     })
-#     email =
 
 
 def account_activate(request, uidb64, token):
