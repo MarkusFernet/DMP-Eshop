@@ -26,10 +26,8 @@
 
 ### To do:
 - Placení
-- Slevy
-- Cena bez DPH
+- Slevy?
 - Rozklikávat obrázky u produktu
-- Více obrázků
 - Autor, ISBN
 - Graficky přidat čáru nad TOTAL PAY pro lepší přehlednost
 - Změnit POČET pole na vypisovací z vybíracího
@@ -39,10 +37,11 @@
 - Predelat reset confirm cely vzhled
 - Zvětšit možnost změnění účtu
 - Vzhled emailů
-- Spravit sčítání přred total pay
+- Spravit sčítání před total pay
 - Prázdný košík -> doporučení?
 - Smazání posledního produktu -> reset stránky
 - Mezi krok u mazani uctu
 - MEZERA MEZI BTN A FORM
 - status info pridat do dashboard kdyz neni zadna historie objednavek
 - odstranit username nebo username = firstname+lastname
+- Pocitani s regular_price/discounted pri pridani do kosiku
