@@ -15,6 +15,9 @@
 - Přidání sledování plateb
 - Skoro sjednoceni vzhledu vsech stranek
 - Zlepšení přehlednosti kódu
+- Vylepšení databáze produktů
+- Možnost přidat více obrázků k produktu
+- Po smazání všech produktů v košíku zobrazení prázdného košíku
 
 # Version 0.1:
 - Schopnost vytvářet produkty a kategorie v admin sekci
