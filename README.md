@@ -10,14 +10,15 @@
 <br />
 
 # Version 0.2:
-- Přeložení 50% stránek
 - Aktivace zasílání emailů
-- Přidání sledování plateb
-- Skoro sjednoceni vzhledu vsech stranek
-- Zlepšení přehlednosti kódu
+- Aktualizace košíku po odstranění všech produktů
+- Správné počítání celkové ceny
 - Vylepšení databáze produktů
-- Možnost přidat více obrázků k produktu
-- Po smazání všech produktů v košíku zobrazení prázdného košíku
+- Přidání sledování plateb
+- Možnost přidat více obrázků k produktům
+- Vylepšení vzhledu stránek
+- Přeložení poloviny stránek
+- Zlepšení přehlednosti kódu
 
 # Version 0.1:
 - Schopnost vytvářet produkty a kategorie v admin sekci
@@ -31,7 +32,6 @@
 - Placení
 - Slevy?
 - Rozklikávat obrázky u produktu
-- Autor, ISBN
 - Graficky přidat čáru nad TOTAL PAY pro lepší přehlednost
 - Změnit POČET pole na vypisovací z vybíracího
 - Změnit způsob přidávání do košíku
@@ -40,9 +40,7 @@
 - Predelat reset confirm cely vzhled
 - Zvětšit možnost změnění účtu
 - Vzhled emailů
-- Spravit sčítání před total pay
 - Prázdný košík -> doporučení?
-- Smazání posledního produktu -> reset stránky
 - Mezi krok u mazani uctu
 - MEZERA MEZI BTN A FORM
 - status info pridat do dashboard kdyz neni zadna historie objednavek
