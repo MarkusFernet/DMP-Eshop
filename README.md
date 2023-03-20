@@ -19,6 +19,9 @@
 - Vylepšení vzhledu stránek
 - Přeložení poloviny stránek
 - Zlepšení přehlednosti kódu
+- Vzhled potvrzovacího emailu
+- Možnost přidávání více adres
+- Změna vzhledu účtu
 
 # Version 0.1:
 - Schopnost vytvářet produkty a kategorie v admin sekci
@@ -35,14 +38,16 @@
 - Graficky přidat čáru nad TOTAL PAY pro lepší přehlednost
 - Změnit POČET pole na vypisovací z vybíracího
 - Změnit způsob přidávání do košíku
-- Přeložení emailů, košíku, účtů a errorů
+- Přeložení košíku, účtů a errorů
 - Přeložit reset status, reset confirm, register email confirm a activation invalid a zkontrolovat (zajisit pravidelnost oproti login, register)
 - Predelat reset confirm cely vzhled
 - Zvětšit možnost změnění účtu
-- Vzhled emailů
+- Vzhled reset hesla emailu -> predelani views na reset hesla
 - Prázdný košík -> doporučení?
 - Mezi krok u mazani uctu
 - MEZERA MEZI BTN A FORM
 - status info pridat do dashboard kdyz neni zadna historie objednavek
 - odstranit username nebo username = firstname+lastname
 - Pocitani s regular_price/discounted pri pridani do kosiku
+- sjednotit sirku a styly vsech forms
+- spravit možnost změn informací uctu

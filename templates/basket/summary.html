@@ -10,7 +10,7 @@
   <hr />
 </div>
 <div class="container">
-  <div class="row g-3" id="gaga">
+  <div class="row g-3" id="basketSection">
     {% if basket|length == 0 %}
     <div class="text-center pt-5 my-5">
       <h1 class="col-12 h3">Košík je prázdný</h1>
@@ -133,8 +133,7 @@
         $('.product-item[data-index="' + prodid + '"]').remove();
 
         if (json.qty == 0) {
-          total = 0
-          subtotal = 0
+          document.getElementById("basket-qty").innerHTML = json.qty;
 
           // Delete basket components
           const basketInfo = document.getElementById("basketInfo");
@@ -144,18 +143,29 @@
           basketCheckoutButton.remove();
           basketProducts.remove();
 
-          let basketEmptyDiv = document.createElement("div");
-          basketEmptyDiv.className = "text-center pt-5 my-5";
-          basketEmptyDiv.style.background = "red";
-          document.getElementById("gaga").appendChild(basketEmptyDiv);
+          // Create a new div, h1, p and a element
+          const div = document.createElement('div');
+          div.classList.add('text-center', 'pt-5', 'my-5');
+          const h1 = document.createElement('h1');
+          h1.classList.add('col-12', 'h3');
+          h1.textContent = 'Košík je prázdný';
+          const p = document.createElement('p');
+          const a = document.createElement('a');
+          a.classList.add('btn', 'btn-primary', 'my-2');
+          a.href = '{% url "store:store_home"%}';
+          a.textContent = 'Pokračovat v nákupu';
+
+          // Append the a to p, append h1 and p to div and div to basketSection
+          p.appendChild(a);
+          div.appendChild(h1);
+          div.appendChild(p);
+          document.getElementById("basketSection").appendChild(div);
         } else {
           total = (parseFloat(json.subtotal) + 99);
           subtotal = json.subtotal
+          document.getElementById("subtotal").innerHTML = subtotal;
+          document.getElementById("total").innerHTML = total;
         }
-
-        document.getElementById("subtotal").innerHTML = subtotal;
-        document.getElementById("basket-qty").innerHTML = json.qty;
-        document.getElementById("total").innerHTML = total;
       },
       error: function (xhr, errmsg, err) {},
     });
