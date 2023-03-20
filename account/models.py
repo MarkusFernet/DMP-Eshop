@@ -3,6 +3,8 @@ from django.core.mail import send_mail
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django_countries.fields import CountryField
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 
 
 class CustomAccountManager(BaseUserManager):
@@ -65,12 +67,18 @@ class UserBase(AbstractBaseUser, PermissionsMixin):
         verbose_name = "Accounts"
         verbose_name_plural = "Accounts"
 
-    def email_user(self, subject, message):
+    def email_user(self, subject, message, html_message):
+        # Set up the email headers
+        from_email = 'markusfernet@gmail.com'
+        recipient_list = [self.email]
+
+        # Send the email using the send_mail function
         send_mail(
             subject,
-            message,
-            'markusfernet@gmail.com',
-            [self.email],
+            strip_tags(message),  # Plain text version of the email message
+            from_email,
+            recipient_list,
+            html_message=html_message,  # HTML version of the email message
             fail_silently=False,
         )
 
