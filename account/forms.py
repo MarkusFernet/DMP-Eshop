@@ -37,7 +37,7 @@ class UserLoginForm(AuthenticationForm):
 
 
 class RegistrationForm(forms.ModelForm):
-    user_name = forms.CharField(label='Uživatelské jméno', min_length=4, max_length=50,)
+    # name = forms.CharField(label='Uživatelské jméno', min_length=4, max_length=50,)
     email = forms.EmailField(label='E-mail', max_length=100,
                              error_messages={'required': 'Sorry, you will need an email'})
     password = forms.CharField(label='Heslo', widget=forms.PasswordInput)
@@ -45,14 +45,14 @@ class RegistrationForm(forms.ModelForm):
 
     class Meta:
         model = Customer
-        fields = ('user_name', 'email',)
+        fields = ('email',)
 
-    def clean_user_name(self):
-        user_name = self.cleaned_data['user_name'].lower()
-        r = Customer.objects.filter(user_name=user_name)
-        if r.count():
-            raise forms.ValidationError("Username already exists")
-        return user_name
+    # def clean_name(self):
+    #     name = self.cleaned_data['name'].lower()
+    #     r = Customer.objects.filter(name=name)
+    #     if r.count():
+    #         raise forms.ValidationError("Username already exists")
+    #     return name
 
     def clean_password2(self):
         cd = self.cleaned_data
@@ -69,8 +69,8 @@ class RegistrationForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['user_name'].widget.attrs.update(
-            {'class': 'form-control mb-3', 'placeholder': 'Uživatelské jméno'})
+        # self.fields['name'].widget.attrs.update(
+        #     {'class': 'form-control mb-3', 'placeholder': 'Uživatelské jméno'})
         self.fields['email'].widget.attrs.update(
             {'class': 'form-control mb-3', 'placeholder': 'E-mail', 'name': 'email', 'id': 'id_email'})
         self.fields['password'].widget.attrs.update(
@@ -85,7 +85,7 @@ class UserEditForm(forms.ModelForm):
         label='Email (nelze změnit)', max_length=200, widget=forms.TextInput(
             attrs={'class': 'form-control mb-3', 'placeholder': 'Email', 'id': 'form-email', 'readonly': 'readonly'}))
 
-    user_name = forms.CharField(
+    name = forms.CharField(
         label='Uživatelské jméno (nelze změnit)', max_length=50, widget=forms.TextInput(
             attrs={'class': 'form-control mb-3', 'placeholder': 'Uživatelské jméno', 'id': 'form-username', 'readonly': 'readonly'}))
 
@@ -95,12 +95,12 @@ class UserEditForm(forms.ModelForm):
 
     class Meta:
         model = Customer
-        fields = ('email', 'user_name', 'first_name',)
+        fields = ('email', 'name', 'first_name',)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['email'].required = True
-        self.fields['user_name'].required = True
+        self.fields['name'].required = True
         self.fields['first_name'].required = True
 
 

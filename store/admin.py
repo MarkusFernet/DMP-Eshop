@@ -11,7 +11,21 @@ from .models import (
     ProductType,
 )
 
-admin.site.register(Category, MPTTModelAdmin)
+
+class CategoryAdminForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = '__all__'
+
+
+class CategoryAdmin(MPTTModelAdmin):
+    form = CategoryAdminForm
+    prepopulated_fields = {'slug': ('name',)}
+
+
+admin.site.register(Category, CategoryAdmin)
+
+# admin.site.register(Category, MPTTModelAdmin)
 
 
 class ProductSpecificationInline(admin.TabularInline):
@@ -39,3 +53,4 @@ class ProductAdmin(admin.ModelAdmin):
         ProductSpecificationValueInline,
         ProductImageInline,
     ]
+    prepopulated_fields = {'slug': ('title',)}

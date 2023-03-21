@@ -22,6 +22,7 @@
 - Vzhled potvrzovacího emailu
 - Možnost přidávání více adres
 - Změna vzhledu účtu
+- Odstranění username
 
 # Version 0.1:
 - Schopnost vytvářet produkty a kategorie v admin sekci
@@ -47,7 +48,6 @@
 - Mezi krok u mazani uctu
 - MEZERA MEZI BTN A FORM
 - status info pridat do dashboard kdyz neni zadna historie objednavek
-- odstranit username nebo username = firstname+lastname
 - Pocitani s regular_price/discounted pri pridani do kosiku
 - sjednotit sirku a styly vsech forms
 - spravit možnost změn informací uctu

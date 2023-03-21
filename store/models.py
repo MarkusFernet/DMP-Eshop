@@ -3,6 +3,9 @@ from django.urls import reverse
 from mptt.models import MPTTModel, TreeForeignKey
 
 
+from django.utils.text import slugify
+
+
 class Category(MPTTModel):
     """
     Category Table implimented with MPTT.
@@ -30,6 +33,11 @@ class Category(MPTTModel):
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.slug = slugify(self.name)
+        super(Category, self).save(*args, **kwargs)
 
 
 class ProductType(models.Model):
