@@ -9,6 +9,9 @@
 </div>
 <br />
 
+# Version 0.3:
+- Přidání wishlistu
+
 # Version 0.2:
 - Aktivace zasílání emailů
 - Aktualizace košíku po odstranění všech produktů
@@ -51,3 +54,4 @@
 - Pocitani s regular_price/discounted pri pridani do kosiku
 - sjednotit sirku a styly vsech forms
 - spravit možnost změn informací uctu
+- Po odstraneni produktu z nabidky, stale viditelny skoro vsude

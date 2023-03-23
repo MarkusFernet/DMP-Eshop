@@ -19,4 +19,5 @@ def category_list(request, category_slug=None):
 
 def product_detail(request, slug):
     product = get_object_or_404(Product, slug=slug, is_active=True)
-    return render(request, 'store/single.html', {'product': product})
+    is_in_wishlist = product.users_wishlist.filter(id=request.user.id).exists()
+    return render(request, 'store/single.html', {'product': product, 'is_in_wishlist': is_in_wishlist})
