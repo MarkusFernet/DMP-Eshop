@@ -44,4 +44,7 @@ urlpatterns = [
     # Wishlist
     path("wishlist", views.wishlist, name="wishlist"),
     path("wishlist/add_to_wishlist/<int:id>", views.add_to_wishlist, name="add_to_wishlist"),
+
+    # Orders
+    path("user_orders/", views.user_orders, name="user_orders"),
 ]

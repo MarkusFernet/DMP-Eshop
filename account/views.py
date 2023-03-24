@@ -13,6 +13,8 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib import messages
 from django.http import JsonResponse
+from orders.models import Order
+from orders.views import user_orders
 
 
 @login_required
@@ -96,35 +98,47 @@ def view_address(request):
 
 @login_required
 def add_address(request):
+    global previous_url_aa
     if request.method == "POST":
         address_form = UserAddressForm(data=request.POST)
         if address_form.is_valid():
             address_form = address_form.save(commit=False)
             address_form.customer = request.user
             address_form.save()
+            if "delivery_address" in previous_url_aa:
+                return redirect("checkout:delivery_address")
             return HttpResponseRedirect(reverse("account:addresses"))
     else:
         address_form = UserAddressForm()
+        previous_url_aa = request.META.get("HTTP_REFERER")
+
     return render(request, "account/dashboard/edit_addresses.html", {"form": address_form})
 
 
 @login_required
 def edit_address(request, id):
+    global previous_url_ea
     if request.method == "POST":
         address = Address.objects.get(pk=id, customer=request.user)
         address_form = UserAddressForm(instance=address, data=request.POST)
         if address_form.is_valid():
             address_form.save()
+            if "delivery_address" in previous_url_ea:
+                return redirect("checkout:delivery_address")
             return HttpResponseRedirect(reverse("account:addresses"))
     else:
         address = Address.objects.get(pk=id, customer=request.user)
         address_form = UserAddressForm(instance=address)
+        previous_url_ea = request.META.get("HTTP_REFERER")
+
     return render(request, "account/dashboard/edit_addresses.html", {"form": address_form})
 
 
 @login_required
 def delete_address(request, id):
     address = Address.objects.filter(pk=id, customer=request.user).delete()
+    if 'address' in request.session:
+        del request.session['address']
     return redirect("account:addresses")
 
 
@@ -132,6 +146,12 @@ def delete_address(request, id):
 def set_default(request, id):
     Address.objects.filter(customer=request.user, default=True).update(default=False)
     Address.objects.filter(pk=id, customer=request.user).update(default=True)
+
+    previous_url_sd = request.META.get("HTTP_REFERER")
+
+    if "delivery_address" in previous_url_sd:
+        return redirect("checkout:delivery_address")
+
     return redirect("account:addresses")
 
 
@@ -147,9 +167,14 @@ def add_to_wishlist(request, id):
     is_in_wishlist = product.users_wishlist.filter(id=request.user.id).exists()
     if is_in_wishlist:
         product.users_wishlist.remove(request.user)
-        messages.success(request, product.title + " has been removed from your WishList")
     else:
         product.users_wishlist.add(request.user)
-        messages.success(request, "Added " + product.title + " to your WishList")
 
     return HttpResponseRedirect(request.META["HTTP_REFERER"])
+
+
+@login_required
+def user_orders(request):
+    user_id = request.user.id
+    orders = Order.objects.filter(user_id=user_id).filter(billing_status=True)
+    return render(request, "account/dashboard/user_orders.html", {"orders": orders})

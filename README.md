@@ -9,6 +9,21 @@
 </div>
 <br />
 
+# Version 1.0:
+- Způsoby dopravy před platbou
+  - Možnost měnit a přidávat způsoby dopravy v adminu
+  - Automatické vybrání dopravy při načtení stránky (Nelze nevybrat žádnou dopravu)
+  - Uložení výběru dopravy do sessions (Není třeba vybírat znovu způsob dopravy, když se rozhodnete přidat další produkt. Předešlý výber se uloží a zvolí sám)
+- Vybrání adresy před platbou
+  - Lze přidat novou adresu jen když žádnou nemáte
+  - Můžete změnit adresu
+  - Možnost si vybrat z více adres, kterou chcete použít
+  - Po úpravě/přidání/vybrání adresy přesměrováno na předešlou stránku (Pokladna/účet)
+  - Zobrazení chyby při nevybrání adresy
+- Placení za pomocí PayPal
+  - Semi-working
+- Přidání orders, neboli historie provedených plateb zákazníka
+
 # Version 0.3:
 - Přidání wishlistu
 

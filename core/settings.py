@@ -24,9 +24,9 @@ INSTALLED_APPS = [
     'storages',
     'basket',
     'account',
-    'payment',
     'orders',
     'mptt',
+    'checkout',
 ]
 
 MIDDLEWARE = [
@@ -120,7 +120,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Custom user model
 AUTH_USER_MODEL = 'account.Customer'
-LOGIN_REDIRECT_URL = '/account/dashboard/'
+LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/account/login/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
