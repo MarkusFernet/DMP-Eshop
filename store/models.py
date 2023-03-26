@@ -116,6 +116,10 @@ class Product(models.Model):
         help_text=("Change product visibility"),
         default=True,
     )
+    on_homepage = models.BooleanField(
+        verbose_name=("Zobrazit na domovské stránce"),
+        default=True,
+    )
     created_at = models.DateTimeField(("Created at"), auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(("Updated at"), auto_now=True)
     users_wishlist = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="user_wishlist", blank=True)

@@ -90,14 +90,15 @@ def payment_complete(request):
     total_paid = response.result.purchase_units[0].amount.value
 
     basket = Basket(request)
+    address = Address.objects.get(customer=request.user, default=True)
     order = Order.objects.create(
         user_id=user_id,
-        full_name=response.result.purchase_units[0].shipping.name.full_name,
+        full_name=address.full_name,
+        # needs fixing
         email=response.result.payer.email_address,
-        address1=response.result.purchase_units[0].shipping.address.address_line_1,
-        address2=response.result.purchase_units[0].shipping.address.admin_area_2,
-        postal_code=response.result.purchase_units[0].shipping.address.postal_code,
-        country_code=response.result.purchase_units[0].shipping.address.country_code,
+        address1=address.address_line,
+        address2=address.address_line2,
+        postal_code=address.postcode,
         total_paid=response.result.purchase_units[0].amount.value,
         order_key=response.result.id,
         payment_option="paypal",

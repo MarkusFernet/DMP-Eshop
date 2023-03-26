@@ -23,17 +23,18 @@
   <div class="row">
     <div class="album pt-5">
       <div class="col-12 pb-3">
-        <h1 class="h3">Všechny produkty</h1>
+        <h1 class="h3">Nejpopulárnější produkty</h1>
       </div>
       {% if not products %}
       <div class="col-12">Aktuálně nejsou žádné produkty k dispozici</div>
       {% else %}
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
         {% for product in products %}
+        {% if product.on_homepage %}
         <div class="col">
           <div class="card shadow-sm">
             {% for image in product.product_image.all %}
-            {% if image.is_feature%}
+            {% if image.is_feature %}
             <a href="{{ product.get_absolute_url }}">
               <img class="img-fluid" src="{{ image.image.url }}" alt="{{ image.alt_text }}">
             </a>
@@ -48,6 +49,7 @@
             </div>
           </div>
         </div>
+        {% endif %}
         {% endfor %}
       </div>
       {% endif %}

@@ -151,44 +151,43 @@
           <path
             d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z" />
         </svg>
-        <small class="d-block mb-3 text-muted">&copy; 2017-2021</small>
+        <small class="d-block mb-3 text-muted">&copy; 2023</small>
       </div>
       <div class="col-6 col-md fs15">
-        <h5>Features</h5>
+        <h5>Kategorie</h5>
         <ul class="list-unstyled">
-          <li><a class="link-secondary text-decoration-none" href="#">Cool stuff</a></li>
-          <li><a class="link-secondary text-decoration-none" href="#">Random feature</a></li>
-          <li><a class="link-secondary text-decoration-none" href="#">Team feature</a></li>
-          <li><a class="link-secondary text-decoration-none" href="#">Stuff for developers</a></li>
-          <li><a class="link-secondary text-decoration-none" href="#">Another one</a></li>
-          <li><a class="link-secondary text-decoration-none" href="#">Last time</a></li>
-        </ul>
+          {% for c in categories %}
+          <li>
+            <a class="link-secondary text-decoration-none" href="{{ c.get_absolute_url }}">{{ c.name|title }}</a>
+          </li>
+          {% endfor %}
       </div>
       <div class="col-6 col-md fs15">
-        <h5>Resources</h5>
+        <h5>Kontakt</h5>
         <ul class="list-unstyled">
-          <li><a class="link-secondary text-decoration-none" href="#">Resource name</a></li>
-          <li><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
-          <li><a class="link-secondary text-decoration-none" href="#">Another resource</a></li>
-          <li><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
-        </ul>
-      </div>
-      <div class="col-6 col-md fs15">
-        <h5>Resources</h5>
-        <ul class="list-unstyled">
-          <li><a class="link-secondary text-decoration-none" href="#">Business</a></li>
-          <li><a class="link-secondary text-decoration-none" href="#">Education</a></li>
-          <li><a class="link-secondary text-decoration-none" href="#">Government</a></li>
-          <li><a class="link-secondary text-decoration-none" href="#">Gaming</a></li>
+          <li class="link-secondary text-decoration-none">email@email.com</li>
+          <li class="link-secondary text-decoration-none">+420 123 123 123</li>
+          <li class="link-secondary text-decoration-none">XXXXXXXX</li>
+          <li class="link-secondary text-decoration-none">XXXXX 155</li>
+          <li class="link-secondary text-decoration-none">123 45</li>
         </ul>
       </div>
       <div class="col-6 col-md">
-        <h5>About</h5>
+        <h5>Různé odkazy</h5>
         <ul class="list-unstyled">
-          <li><a class="link-secondary text-decoration-none" href="#">Team</a></li>
-          <li><a class="link-secondary text-decoration-none" href="#">Locations</a></li>
-          <li><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>
-          <li><a class="link-secondary text-decoration-none" href="#">Terms</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Obchodní podmínky</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">O nás</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Vrácení</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Ochrana osobních údajů</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Různé odkazy</h5>
+        <ul class="list-unstyled">
+          <li><a class="link-secondary text-decoration-none" href="#">Nejčastější dotazy</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Spolupráce</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Prodejny</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Dokumenty ke stažení</a></li>
         </ul>
       </div>
     </div>

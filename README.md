@@ -18,11 +18,16 @@
   - Lze přidat novou adresu jen když žádnou nemáte
   - Můžete změnit adresu
   - Možnost si vybrat z více adres, kterou chcete použít
-  - Po úpravě/přidání/vybrání adresy přesměrováno na předešlou stránku (Pokladna/účet)
+  - Po úpravě/přidání/vybrání adresy přesměrováno na předešlou stránku (pokladna/účet)
   - Zobrazení chyby při nevybrání adresy
-- Placení za pomocí PayPal
-  - Semi-working
-- Přidání orders, neboli historie provedených plateb zákazníka
+- Placení za pomocí PayPal nebo Karty
+  - Sandbox mode zapnutý
+    - Číslo karty (Visa): 4111111111111111
+    - Konec platnosti: Jakékoliv budoucí datum
+    - CVV/CVC: Jakékoliv tři čísla
+    - PayPal email: sb-gyi2o25358361@personal.example.com
+    - PayPal heslo: OM7@tXCq
+- Přidání historie provedených plateb zákazníka (orders)
 
 # Version 0.3:
 - Přidání wishlistu
