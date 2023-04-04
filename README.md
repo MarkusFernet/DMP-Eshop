@@ -9,6 +9,9 @@
 </div>
 <br />
 
+# Version 1.1:
+- Přidání a základní implementování knihovny React.js
+
 # Version 1.0:
 - Způsoby dopravy před platbou
   - Možnost měnit a přidávat způsoby dopravy v adminu
@@ -28,6 +31,7 @@
     - PayPal email: sb-gyi2o25358361@personal.example.com
     - PayPal heslo: OM7@tXCq
 - Přidání historie provedených plateb zákazníka (orders)
+- Přeložení většiny stránek
 
 # Version 0.3:
 - Přidání wishlistu

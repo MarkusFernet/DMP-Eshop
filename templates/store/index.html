@@ -1,8 +1,9 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}*{% endblock %}
 {% block content %}
 
-<section class="text-center container">
+{% comment %} <section class="text-center container">
   <div class="row py-lg-3">
     <div class="col-lg-6 col-md-8 mx-auto">
       <h1 class="h1 fw-bold">Nadpis</h1>
@@ -18,7 +19,8 @@
       </p>
     </div>
   </div>
-</section>
+</section> {% endcomment %}
+<div id="react-mount-point"></div>
 <div class="container">
   <div class="row">
     <div class="album pt-5">
@@ -56,5 +58,119 @@
     </div>
   </div>
 </div>
+
+
+{% comment %} 
+<div id="react-mount-point"></div>
+<script src="https://unpkg.com/react/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+<script>
+  ReactDOM.render(
+    React.createElement(
+      'div',
+      null,
+      'Hello, World!'
+    ),
+    document.getElementById('react-mount-point')
+  );
+</script> {% endcomment %}
+<script src="https://unpkg.com/react/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"></script>
+<script>
+  const TEXTS = [
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at turpis vitae ante dictum facilisis eu et mi. Ut convallis fringilla viverra. Sed pellentesque eros id dolor scelerisque viverra. Pellentesque eros tellus, tincidunt sed varius in, pretium eu nisl. Quisque egestas ac libero et tincidunt. In placerat, enim non dictum porta, quam metus rhoncus dolor, eu gravida magna tellus id diam. Nullam cursus tortor faucibus purus imperdiet, quis ornare dolor vestibulum.',
+    'Proin venenatis lobortis mi, vel sodales eros tempus eget. Proin imperdiet ex vitae urna iaculis fringilla. Quisque tempus ornare feugiat. Nunc ac purus at quam tincidunt hendrerit a vehicula nibh. Curabitur tincidunt suscipit suscipit. Vestibulum viverra blandit quam quis convallis. Vestibulum dapibus justo eget nulla iaculis ultricies. Donec lorem lacus, hendrerit a felis eget, placerat porttitor metus.',
+    'Duis a eleifend dolor. Sed quis urna elit. Fusce bibendum commodo lobortis. Mauris sagittis non purus et maximus. Proin eget efficitur mi, sed varius tortor. Aenean porta auctor velit nec tempor. Vestibulum mattis nisi at mi porta porta.',
+  ];
+
+  class AnimatedText extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        textIndex: 0,
+        isFading: false,
+      };
+    }
+
+    componentDidMount() {
+      this.intervalId = setInterval(() => {
+        this.setState({
+          isFading: true,
+        });
+        setTimeout(() => {
+          this.setState(prevState => ({
+            textIndex: (prevState.textIndex + 1) % TEXTS.length,
+            isFading: false,
+          }));
+        }, 500);
+      }, 20000);
+    }
+
+    componentWillUnmount() {
+      clearInterval(this.intervalId);
+    }
+
+    render() {
+      const { isFading, textIndex } = this.state;
+      const currentText = TEXTS[textIndex];
+      const className = isFading ? 'fade-out' : 'fade-in';
+      return React.createElement('p', { className: 'lead text-muted sansserif ' + className }, currentText);
+    }
+  }
+
+  const section = React.createElement(
+    'section',
+    { className: 'text-center container' },
+    React.createElement(
+      'div',
+      { className: 'row py-lg-3' },
+      React.createElement(
+        'div',
+        { className: 'col-lg-6 col-md-8 mx-auto' },
+        React.createElement(
+          'h1',
+          { className: 'h1 fw-bold' },
+          'Nadpis'
+        ),
+        React.createElement(
+          AnimatedText,
+          null
+        ),
+        React.createElement(
+          'p',
+          null,
+          React.createElement(
+            'a',
+            { href: '#', className: 'btn btn-primary my-2' },
+            'Tlačítko'
+          )
+        )
+      )
+    )
+  );
+
+  ReactDOM.render(section, document.getElementById('react-mount-point'));
+</script>
+
+<style>
+  .fade-in {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+  }
+  
+  .text-muted {
+    color: #6c757d;
+  }
+</style>
 
 {% endblock %}
