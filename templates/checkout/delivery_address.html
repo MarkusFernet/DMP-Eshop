@@ -23,7 +23,7 @@
   {% endif %}
   <div class="row g-3">
     {% if addresses|length == 0 %}
-    <div class="col-12">There are no delivery addresses, <a href="{% url 'account:add_address' %}">add address</a></div>
+    <div class="col-12">Nemáte vytvořenou žádnou adresu, <a href="{% url 'account:add_address' %}">přidat adresu</a></div>
     {% else %}
     <div class="col-md-4 col-lg-4 order-md-last p-0 order-3">
       <div class="d-flex bd-highlight ms-0">

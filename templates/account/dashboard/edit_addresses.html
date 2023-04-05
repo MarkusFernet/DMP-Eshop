@@ -13,17 +13,17 @@
     </div>
     {% endif %}
     {% csrf_token %}
-    <label class="small fw-bold">{{ form.full_name.label}}</label>
+    <p class="small fw-bold mb-0">Celé jméno</p>
     {{ form.full_name }}
-    <label class="small fw-bold">{{ form.phone.label}}</label>
+    <p class="small fw-bold mb-0">Telefon</p>
     {{ form.phone }}
-    <label class="small fw-bold">{{ form.address_line.label}}</label>
-    {{ form.address_line }}
-    <label class="small fw-bold">{{ form.address_line2.label}}</label>
-    {{ form.address_line2 }}
-    <label class="small fw-bold">{{ form.town_city.label}}</label>
+    <p class="small fw-bold mb-0">Město</p>
     {{ form.town_city }}
-    <label class="small fw-bold">{{ form.postcode.label}}</label>
+    <p class="small fw-bold mb-0">Ulice</p>
+    {{ form.address_line }}
+    <p class="small fw-bold mb-0">Číslo popisné</p>
+    {{ form.address_line2 }}
+    <p class="small fw-bold mb-0">PSČ</p>
     {{ form.postcode }}
     <button class="btn btn-primary btn-block py-2 mb-4 mt-4 fw-bold w-100" type="button" value="Submit" onclick="submitForm()">
     Uložit

@@ -11,20 +11,20 @@ class UserAddressForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields["full_name"].widget.attrs.update(
-            {"class": "form-control mb-2 account-form", "placeholder": "Full Name"}
+            {"class": "form-control mb-2 account-form", "placeholder": "Celé jméno"}
         )
-        self.fields["phone"].widget.attrs.update({"class": "form-control mb-2 account-form", "placeholder": "Phone"})
+        self.fields["phone"].widget.attrs.update({"class": "form-control mb-2 account-form", "placeholder": "Telefon"})
+        self.fields["town_city"].widget.attrs.update(
+            {"class": "form-control mb-2 account-form", "placeholder": "Město"}
+        )
         self.fields["address_line"].widget.attrs.update(
-            {"class": "form-control mb-2 account-form", "placeholder": "Full Name"}
+            {"class": "form-control mb-2 account-form", "placeholder": "Ulice"}
         )
         self.fields["address_line2"].widget.attrs.update(
-            {"class": "form-control mb-2 account-form", "placeholder": "Full Name"}
-        )
-        self.fields["town_city"].widget.attrs.update(
-            {"class": "form-control mb-2 account-form", "placeholder": "Full Name"}
+            {"class": "form-control mb-2 account-form", "placeholder": "Číslo popisné"}
         )
         self.fields["postcode"].widget.attrs.update(
-            {"class": "form-control mb-2 account-form", "placeholder": "Full Name"}
+            {"class": "form-control mb-2 account-form", "placeholder": "PSČ"}
         )
 
 
@@ -86,22 +86,17 @@ class UserEditForm(forms.ModelForm):
             attrs={'class': 'form-control mb-3', 'placeholder': 'Email', 'id': 'form-email', 'readonly': 'readonly'}))
 
     name = forms.CharField(
-        label='Uživatelské jméno (nelze změnit)', max_length=50, widget=forms.TextInput(
-            attrs={'class': 'form-control mb-3', 'placeholder': 'Uživatelské jméno', 'id': 'form-username', 'readonly': 'readonly'}))
-
-    first_name = forms.CharField(
-        label='Křestní jméno', min_length=4, max_length=50, widget=forms.TextInput(
-            attrs={'class': 'form-control mb-3', 'placeholder': 'Křestní jméno', 'id': 'form-firstname'}))
+        label='Celé jméno', max_length=50, widget=forms.TextInput(
+            attrs={'class': 'form-control mb-3', 'placeholder': 'Celé jméno', 'id': 'form-name'}))
 
     class Meta:
         model = Customer
-        fields = ('email', 'name', 'first_name',)
+        fields = ('email', 'name',)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['email'].required = True
         self.fields['name'].required = True
-        self.fields['first_name'].required = True
 
 
 class PwdResetForm(PasswordResetForm):

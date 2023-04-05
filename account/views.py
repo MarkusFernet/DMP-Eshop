@@ -37,7 +37,7 @@ def edit_details(request):
 
 @login_required
 def delete_user(request):
-    user = Customer.objects.get(name=request.user)
+    user = Customer.objects.get(email=request.user)
     user.is_active = False
     user.save()
     logout(request)
@@ -83,7 +83,7 @@ def account_activate(request, uidb64, token):
         user.is_active = True
         user.save()
         login(request, user)
-        return render(request, 'store/index.html')
+        return redirect('store:store_home')
     else:
         return render(request, 'account/registration/activation_invalid.html')
 

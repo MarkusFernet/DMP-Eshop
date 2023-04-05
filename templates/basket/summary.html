@@ -40,15 +40,25 @@
         {% with product=item.product %}
         <div class="card mb-3 border-0 product-item" data-index="{{product.id}}">
           <div class="row g-0">
-            <div class="col-md-2 d-none d-md-block">
+            <div class="col-md-2 d-block d-md-none">
               {% for image in product.product_image.all %}
-              {% if image.is_feature%}
-              <a href="{{ product.get_absolute_url }}">
-                <img class="img-fluid" src="{{ image.image.url }}" alt="{{ image.alt_text }}">
-              </a>
-              {% endif %}
+                  {% if image.is_feature %}
+                      <a href="{{ product.get_absolute_url }}">
+                          <img style="width:80px;" class="img-fluid" src="{{ image.image.url }}" alt="{{ image.alt_text }}">
+                      </a>
+                  {% endif %}
               {% endfor %}
-            </div>
+          </div>
+          
+          <div class="col-md-2 d-none d-md-block">
+              {% for image in product.product_image.all %}
+                  {% if image.is_feature %}
+                      <a href="{{ product.get_absolute_url }}">
+                          <img class="img-fluid" src="{{ image.image.url }}" alt="{{ image.alt_text }}">
+                      </a>
+                  {% endif %}
+              {% endfor %}
+          </div>
             <div class="col-md-10 ps-md-3">
               <div class="card-body p-1">
                 <a class="text-decoration-none text-reset" href="{{item.product.get_absolute_url}}">
